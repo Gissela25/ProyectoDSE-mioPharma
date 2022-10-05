@@ -12,6 +12,7 @@ namespace mioPharma.Models
         public string Correo { get; set; }
         public string Clave { get; set; }
         public EstadoU EstadoU { get; set; }
+        public TipoU TipoU { get; set; }
 
     }
 }

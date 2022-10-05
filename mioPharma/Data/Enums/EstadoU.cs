@@ -3,6 +3,6 @@
     public enum EstadoU
     {
         Activo,
-        Desactivo
+        Inactivo
     }
 }
