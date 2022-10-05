@@ -1,9 +1,10 @@
-﻿using mioPharma.Data.Enums;
+﻿using mioPharma.Data.Base;
+using mioPharma.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace mioPharma.Models
 {
-    public class Cliente
+    public class Cliente:IEntityBase
     {
         [Key]
         public int Id { get; set; }
