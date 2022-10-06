@@ -1,14 +1,14 @@
 ﻿@using mioPharma.Data.Enums
-@model Usuario
+@model Cliente
 @{
-    ViewData["Title"] = "Editando Usuario";
+    ViewData["Title"] = "Actualizando Cuenta";
 }
 <div class="row">
     <div class="col-md-8 offset-md-2">
-        <h4>Editando Usuario</h4>
+        <h4>Actualizando Cuenta</h4>
         <div class="row">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -23,31 +23,38 @@
                 </div>
                 <div class="form-group">
                      <label asp-for="Correo" class="form-label"></label>
-                     <input placeholder="example@gmail.com"  asp-for="Correo" class="form-control"/>
+                     <input placeholder="example@gmail.com" asp-for="Correo" class="form-control"/>
                      <span asp-validation-for="Correo" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                     <label asp-for="Clave" class="form-label"></label>
-                     <input type="password" placeholder="Ingresa tu Apellido"  asp-for="Clave" class="form-control"/>
+                    @* <label asp-for="Clave" class="form-label"></label>*@
+                     <input  hidden  placeholder="Ingresa tu contraseña" asp-for="Clave" class="form-control"/>
                      <span asp-validation-for="Clave" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="TipoU" class="form-label"></label>
-                    <select asp-for="TipoU" class="form-control" asp-items="Html.GetEnumSelectList<TipoU>()"></select>
-                    <span asp-validation-for="TipoU" class="text-danger"></span>
+                     <label asp-for="Telefono" class="form-label"></label>
+                     <input placeholder="Example: 7001-0002/ 70010002" asp-for="Telefono" class="form-control"/>
+                     <span asp-validation-for="Telefono" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="EstadoU" class="form-label"></label>
-                    <select asp-for="EstadoU" class="form-control"  asp-items="Html.GetEnumSelectList<EstadoU>()"></select>
-                    <span asp-validation-for="EstadoU" class="text-danger"></span>
+                    <select asp-for="EstadoC" hidden class="form-control" asp-items="Html.GetEnumSelectList<EstadoU>()"></select>
+                    <span asp-validation-for="EstadoC" class="text-danger"></span>
                 </div>
+                <div class="form-group">
+                     <label asp-for="Direccion" class="form-label"></label>
+                     <textarea placeholder="Ingresa tu dirección" asp-for="Direccion" rows="2" class="form-control noresize"></textarea>
+                     <span asp-validation-for="Direccion" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-12">
+
             </div>
             </div>
             <div class="form-group my-2 py-3">
                 <input type="submit" value="Edit" class="btn btn-outline-success float-right"/>
-                <a class="btn btn-outline-secondary" asp-action="Index" asp-controller="Usuarios">Regresar</a>
+                <a class="btn btn-outline-secondary" asp-action="Index" asp-controller="Clientes">Regresar</a>
             </div>
             </form>
             </div>

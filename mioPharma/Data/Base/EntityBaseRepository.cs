@@ -44,5 +44,12 @@ namespace mioPharma.Data.Base
             entityentry.State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
+
+        public async Task UpdateStateAsync(int id, T entity)
+        {
+            EntityEntry entityentry = _context.Entry<T>(entity);
+            entityentry.State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
     }
 }

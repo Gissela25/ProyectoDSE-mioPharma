@@ -9,6 +9,8 @@ namespace mioPharma.Data.Base
         Task<T> GetByIdAsync(int id);
         Task AddAsync(T entity);
         Task UpdateAsync(int id, T entity);
+
+        Task UpdateStateAsync(int id, T entity);
         Task DeleteAsync(int id);
     }
 }
