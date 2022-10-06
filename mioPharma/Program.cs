@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using mioPharma.Data;
+using mioPharma.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 //DbContext configuration
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
+builder.Services.AddScoped<IUsuariosService, UsuariosService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -29,6 +31,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}/{state?}");
 
 app.Run();

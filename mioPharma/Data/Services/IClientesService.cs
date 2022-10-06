@@ -1,6 +1,10 @@
-﻿namespace mioPharma.Data.Services
+﻿using mioPharma.Data.Base;
+using mioPharma.Models;
+
+namespace mioPharma.Data.Services
 {
-    public interface IClientesService
+    public interface IClientesService: IEntityBaseRepository<Cliente>
     {
+
     }
 }

@@ -42,9 +42,6 @@ namespace mioPharma.Data.Base
         {
             EntityEntry entityentry = _context.Entry<T>(entity);
             entityentry.State = EntityState.Modified;
-
-
-
             await _context.SaveChangesAsync();
         }
     }

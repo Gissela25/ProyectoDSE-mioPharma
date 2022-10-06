@@ -2,7 +2,7 @@
 {
     public enum TipoU
     {
-        Administrador,
+        Administrador=1,
         Empleado
     }
 }

@@ -2,7 +2,7 @@
 {
     public enum EstadoU
     {
-        Activo,
+        Activo=1,
         Inactivo
     }
 }

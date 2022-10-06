@@ -1,6 +1,9 @@
-﻿namespace mioPharma.Data.Services
+﻿using mioPharma.Data.Base;
+using mioPharma.Models;
+
+namespace mioPharma.Data.Services
 {
-    public interface IUsuariosService
+    public interface IUsuariosService:IEntityBaseRepository<Usuario>
     {
     }
 }
