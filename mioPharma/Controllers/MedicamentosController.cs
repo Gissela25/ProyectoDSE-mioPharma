@@ -33,7 +33,7 @@ namespace mioPharma.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Create([Bind("Nombre,Precio,Presentacion,Existencias,Descripcion,Img_Composicion,Img_Medicamento")]Medicamento medicamento)
+        public async Task<IActionResult> Create([Bind("Nombre,Precio,Presentacion,Existencias,Descripcion,Img_Composicion,Img_Medicamento,EstadoM")]Medicamento medicamento)
         {
             if (!ModelState.IsValid) return View(medicamento);
 
@@ -57,7 +57,7 @@ namespace mioPharma.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Edit(int id,[Bind("Id,Nombre,Precio,Presentacion,Existencias,Descripcion,Img_Composicion,Img_Medicamento")] Medicamento medicamento)
+        public async Task<IActionResult> Edit(int id,[Bind("Id,Nombre,Precio,Presentacion,Existencias,Descripcion,Img_Composicion,Img_Medicamento,EstadoM")] Medicamento medicamento)
         {
             if (!ModelState.IsValid) return View(medicamento);
 
@@ -70,6 +70,20 @@ namespace mioPharma.Controllers
           
         }
 
+        [HttpGet]
+        public async Task<IActionResult> EditState(int id, string state)
+        {
+            var clientesDetails = await _service.GetByIdAsync(id);
+            if (clientesDetails == null) return View("NotFound");
+            ViewBag.State = state;
+            return View(clientesDetails);
+        }
 
+        [HttpPost, ActionName("EditState")]
+        public async Task<IActionResult> EditConfirmed(int id, [Bind("Id,Nombre,Precio,Presentacion,Existencias,Descripcion,Img_Composicion,Img_Medicamento,EstadoM")] Medicamento medicamento)
+        {
+            await _service.UpdateStateAsync(id, medicamento);
+            return RedirectToAction(nameof(Index2));
+        }
     }
 }

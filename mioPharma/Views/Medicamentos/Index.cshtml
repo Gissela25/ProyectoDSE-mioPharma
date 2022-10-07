@@ -3,28 +3,31 @@
     ViewData["Title"] = "Lista de Medicamentos";
 }
 <div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-md-4 col-xs-6 border-primary mb-3">
-            <div class="card mb-3 mt-4" style="max-width: 305px;">
-                <div class="row g-0">
-                    <div class="col-md-12 mb-4">
-                        <div class="card-header">
-                            <p class="card-text">
-                                <h5 class="card-title">
-                                    @item.Nombre
-                                    @*<a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>*@
+   
+        @foreach (var item in Model)
+        {
+            @if(@item.EstadoM.ToString() == "Activo")
+            {
+            <div class="col-md-4 col-xs-6 border-primary mb-3">
+                <div class="card mb-3 mt-4" style="max-width: 305px;">
+                    <div class="row g-0">
+                        <div class="col-md-12 mb-4">
+                            <div class="card-header">
+                                <p class="card-text">
+                                    <h5 class="card-title">
+                                        @item.Nombre
+                                        @*<a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>*@
 
-                                </h5>
-                            </p>
+                                    </h5>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <center> <img src="@item.Img_Medicamento" width="250px" height="300px" alt="@item.Nombre">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            @*<p class="card-text"></p>
+                        <div class="col-md-12">
+                            <center> <img src="@item.Img_Medicamento" width="250px" height="300px" alt="@item.Nombre">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                @*<p class="card-text"></p>
                         <p class="card-text"><b>Cinema: </b>@item.Cinema.Name</p>
                         <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
                         <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
@@ -45,25 +48,28 @@
 
                         }
                         </p>*@
-                            <p class="card-text">
-                                <b> Precio: $</b>@item.Precio 
-                                <b>Existencias</b>@item.Existencias
-                            </p>
+                                <p class="card-text">
+                                    <b> Precio: $</b>@item.Precio
+                                    <b>Existencias</b>@item.Existencias
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="card-footer ">
-                            <p class="card-text">
+                        <div class="col-md-12">
+                            <div class="card-footer ">
+                                <p class="card-text">
 
-                                <a class=" btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i>Detalles</a>
-                        @*        <a class="btn btn-warning" asp-controller="Reservaciones" asp-action="Create" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Reservar</a>*@
-                            </p>
+                                    <a class=" btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i>Detalles</a>
+                                    @*        <a class="btn btn-warning" asp-controller="Reservaciones" asp-action="Create" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Reservar</a>*@
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+
     }
+
 </div>
 @section Scripts{
     <script>

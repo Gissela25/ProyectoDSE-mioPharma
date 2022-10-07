@@ -1,0 +1,89 @@
+﻿@using mioPharma.Data.Enums
+@model Medicamento
+@{
+    ViewData["Title"] = "Modificando Estado";
+}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h4>
+            @Html.ViewBag.State  Medicamentos
+        </h4>
+        <div class="row">
+            <form asp-action="EditState">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row my-3">
+                    <div class="col-md-6 offset-md-2 align-content-center">
+                        @if (@Html.ViewBag.State == "Desactivar")
+                        {
+                            <h4 class="text-danger">¿Deseas @Html.ViewBag.State a @Model.Nombre?</h4>
+                            <input hidden value="2" asp-for="EstadoM" />
+                        }
+                        else if (@Html.ViewBag.State == "Activar")
+                        {
+                            <input hidden value="1" asp-for="EstadoM" />
+                            <h4 class="text-success">¿Deseas @Html.ViewBag.State a @Model.Nombre?</h4>
+                        }
+                        <input hidden asp-for="Img_Medicamento" />
+                        <input hidden asp-for="Img_Composicion" />
+                        <div class="form-group text-center">
+                            <img id="Img_MedicamentoPreview" style="max-width:150px" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Nombre" class="form-label"></label>
+                            <input asp-for="Nombre" readonly class="form-control" />
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Precio" class="form-label"></label>
+                            <input asp-for="Precio" readonly class="form-control" />
+                            <span asp-validation-for="Precio" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Existencias" class="form-label"></label>
+                            <input asp-for="Existencias" readonly class="form-control" />
+                            <span asp-validation-for="Existencias" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Descripcion" class="form-label"></label>
+                            <textarea asp-for="Descripcion" readonly class="form-control"></textarea>
+                            <span asp-validation-for="Descripcion" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Presentacion" class="form-label"></label>
+                            <textarea readonly asp-for="Presentacion" rows="2" class="form-control noresize"></textarea>
+                            <span asp-validation-for="Presentacion" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center">
+                            <img id="Img_ComposicionPreview" style="max-width:150px" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group my-2 py-3 justify-content-center">
+                    <input type="submit" value="Actualizar" class="btn btn-outline-success" />
+                    <a class="btn btn-outline-secondary" asp-action="Index2" asp-controller="Medicamentos">Regresar</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function() {
+            var output = document.getElementById("Img_MedicamentoPreview");
+            output.src = $("#Img_Medicamento").val();
+        });
+        $("#Img_Medicamento").on("change", function() {
+            var output = document.getElementById('Img_MedicamentoPreview');
+            output.src = $(this).val();
+        })
+        $(document).ready(function() {
+            var output = document.getElementById("Img_ComposicionPreview");
+            output.src = $("#Img_Composicion").val();
+        });
+        $("#Img_Composicion").on("change", function() {
+            var output = document.getElementById('Img_ComposicionPreview');
+            output.src = $(this).val();
+        })
+    </script>
+}

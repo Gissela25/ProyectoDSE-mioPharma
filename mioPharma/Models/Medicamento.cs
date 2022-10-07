@@ -1,4 +1,5 @@
 ﻿using mioPharma.Data.Base;
+using mioPharma.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace mioPharma.Models
@@ -40,6 +41,8 @@ namespace mioPharma.Models
         [Display(Name = "Medicamento")]
         [Required(ErrorMessage = "El campo Medicamento no puede estar vacío")]
         public string Img_Medicamento { get; set; }
-
+        [Display(Name = "Estado")]
+        public EstadoU EstadoM { get; set; }
+        
     }
 }
