@@ -11,6 +11,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 
 builder.Services.AddScoped<IUsuariosService, UsuariosService>();
 builder.Services.AddScoped<IClientesService, ClientesService>();
+builder.Services.AddScoped<IMedicamentosService, MedicamentosService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

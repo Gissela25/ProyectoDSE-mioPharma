@@ -1,0 +1,80 @@
+﻿@model Medicamento
+
+@{
+    ViewData["Title"] = "Agregar nuevo medicamento";
+}
+
+<div class="row-text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Agregar nuevo medicamento</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger">
+                    </div>
+                    <div class="form-group text-center">
+                        <img id="Img_MedicamentoPreview" style="max-width:150px" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Img_Medicamento" class="control-label"></label>
+                        <input asp-for="Img_Medicamento" class="form-control" />
+                        <span asp-validation-for="Img_Medicamento" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Descripcion" class="control-label"></label>
+                        <textarea asp-for="Descripcion" class="form-control"></textarea>
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Precio" class="control-label"></label>
+                        <input asp-for="Precio" class="form-control" />
+                        <span asp-validation-for="Precio" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Existencias" class="control-label"></label>
+                        <input asp-for="Existencias" class="form-control" />
+                        <span asp-validation-for="Existencias" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Presentacion" class="control-label"></label>
+                        <input asp-for="Presentacion" class="form-control" />
+                        <span asp-validation-for="Presentacion" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Img_Composicion" class="control-label"></label>
+                        <input asp-for="Img_Composicion" class="form-control" />
+                        <span asp-validation-for="Img_Composicion" class="text-danger"></span>
+                    </div>
+                    <div class="form-group text-center">
+                        <img id="Img_ComposicionPreview" style="max-width:150px" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index2">Show</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $("#Img_Medicamento").on("change", function() {
+            var output = document.getElementById('Img_MedicamentoPreview');
+            output.src = $(this).val();
+        })
+        $("#Img_Composicion").on("change", function() {
+            var output = document.getElementById('Img_ComposicionPreview');
+            output.src = $(this).val();
+        })
+    </script>
+}

@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using mioPharma.Models;
+using System.Linq.Expressions;
 
 namespace mioPharma.Data.Base
 {

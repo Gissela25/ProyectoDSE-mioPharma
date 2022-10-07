@@ -3,8 +3,8 @@ using mioPharma.Models;
 
 namespace mioPharma.Data.Services
 {
-    public interface IClientesService : IEntityBaseRepository<Cliente>
+    public interface IMedicamentosService : IEntityBaseRepository<Medicamento>
     {
-
+        Task AddAsync();
     }
 }
