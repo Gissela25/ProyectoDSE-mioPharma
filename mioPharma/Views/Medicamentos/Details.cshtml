@@ -18,11 +18,11 @@
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
-                        <div class="carousel-inner">
+                        <div class="img-thumbnail">
                             <div class="carousel-item active">
                                 <img width="200" height="375" class="d-block w-100" src="@Model.Img_Medicamento" />
                             </div>
-                            <div class="carousel-item">
+                            <div class="rounded mx-auto d-block"
                                 <img width="200" height="375" class="d-block w-100" src="@Model.Img_Composicion" />
                             </div>
                         </div>
@@ -40,19 +40,24 @@
         </div>
         <div class="col-8 col-sm-6">
             <div class="card text-center">
-                <div class="card-header text-white"  style="background-color: #25316D;">
+                <div class="card-header text-white" style="background-color: #0D6EFD;">
                     Detalles de @Model.Nombre
                 </div>
+               
                 <div class="card-body">
                     <h5 class="card-title">Descripcion</h5>
                     <p class="card-text">@Model.Descripcion</p>
                     <p><b>Existencias</b></p>
                   <p class="text">@Model.Existencias</p>
+                    
                    
                     <p><b>Presentacion</b></p>
                         <p class="text">@Model.Presentacion</p>
+                    <div class="col-md-12">
+                        <center> <img src="@Model.Img_Composicion" width="250px" height="300px">
+                    </div>
                 </div>
-                <div class="card-footer text-white"  style="background-color: #25316D;">
+                <div class="card-footer text-white" style="background-color: ;">
                     $@Model.Precio
                 </div>
             </div>

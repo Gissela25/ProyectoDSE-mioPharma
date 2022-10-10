@@ -12,41 +12,62 @@
             <div class="col-md-6">
                 <div class="form-group">
                      <label asp-for="Nombre" class="form-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-person-check-fill"></i></i></span>
                      <input placeholder="Ingresa tu Nombre" asp-for="Nombre" class="form-control"/>
+                     </div>
                      <span asp-validation-for="Nombre" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                      <label asp-for="Apellido" class="form-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-person-check-fill"></i></i></span>
                      <input placeholder="Ingresa tu Apellido" asp-for="Apellido" class="form-control"/>
                      <span asp-validation-for="Apellido" class="text-danger"></span>
-                </div>
+                            </div>
+                 </div>
                 <div class="form-group">
                      <label asp-for="Correo" class="form-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-envelope-exclamation"></i></i></i></span>
                      <input placeholder="example@gmail.com" asp-for="Correo" class="form-control"/>
                      <span asp-validation-for="Correo" class="text-danger"></span>
+                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                      <label asp-for="Clave" class="form-label"></label>
-                     <input type="password" placeholder="Ingresa tu contraseña" asp-for="Clave" class="form-control"/>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-key"></i></i></i></i></span>
+ <input type="password" placeholder="Ingresa tu contraseña" asp-for="Clave" class="form-control"/>
                      <span asp-validation-for="Clave" class="text-danger"></span>
-                </div>
+                            </div>
+
+                        </div>
                 <div class="form-group">
                     <label asp-for="TipoU" class="form-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-exclamation-circle"></i></i></i></i></span>
                     <select asp-for="TipoU" class="form-control" asp-items="Html.GetEnumSelectList<TipoU>()"></select>
-                    <span asp-validation-for="TipoU" class="text-danger"></span>
-                </div>
+                           
+                        <span asp-validation-for="TipoU" class="text-danger"></span>
+                            </div>
+                    </div>
                 <div class="form-group">
                     <label asp-for="EstadoU" class="form-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-person-workspace"></i></i></i></i></i></span>
                     <select asp-for="EstadoU" class="form-control" asp-items="Html.GetEnumSelectList<EstadoU>()"></select>
-                    <span asp-validation-for="EstadoU" class="text-danger"></span>
+                            
+                        <span asp-validation-for="EstadoU" class="text-danger"></span>
+                            </div>
                 </div>
             </div>
             </div>
-            <div class="form-group my-2 py-3">
-                <input type="submit" value="Create" class="btn btn-outline-success float-right"/>
-                <a class="btn btn-outline-secondary" asp-action="Index" asp-controller="Usuarios">Regresar</a>
+                <div class=" form-group vstack gap-2 col-md-5 mx-auto mt-4">
+                <input type="submit" value="Create" class="btn btn-outline-dark float-right"/>
+                <a class="btn btn-outline-dark" asp-action="Index" asp-controller="Usuarios">Regresar</a>
             </div>
             </form>
             </div>
