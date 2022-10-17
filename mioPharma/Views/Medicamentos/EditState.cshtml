@@ -30,27 +30,42 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="Nombre" class="form-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-capsule"></i></span>
                             <input asp-for="Nombre" readonly class="form-control" />
+                            </div>
                             <span asp-validation-for="Nombre" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Precio" class="form-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-currency-dollar"></i></span>
                             <input asp-for="Precio" readonly class="form-control" />
+                            </div>
                             <span asp-validation-for="Precio" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Existencias" class="form-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-archive"></i></span>
                             <input asp-for="Existencias" readonly class="form-control" />
+                            </div>
                             <span asp-validation-for="Existencias" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Descripcion" class="form-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-chat-left-text"></i></span>
                             <textarea asp-for="Descripcion" readonly class="form-control"></textarea>
+                            </div>
                             <span asp-validation-for="Descripcion" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Presentacion" class="form-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-prescription"></i></span>
                             <textarea readonly asp-for="Presentacion" rows="2" class="form-control noresize"></textarea>
+                            </div>
                             <span asp-validation-for="Presentacion" class="text-danger"></span>
                         </div>
                         <div class="form-group text-center">
@@ -58,9 +73,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group my-2 py-3 justify-content-center">
-                    <input type="submit" value="Actualizar" class="btn btn-outline-success" />
-                    <a class="btn btn-outline-secondary" asp-action="Index2" asp-controller="Medicamentos">Regresar</a>
+                <div class="form-group vstack gap-2 col-md-5 mx-auto mt-4">
+                    <input type="submit" value="Actualizar" class="btn btn-outline-dark" />
+                    <a class="btn btn-outline-dark" asp-action="Index2" asp-controller="Medicamentos">Regresar</a>
                 </div>
 
             </form>

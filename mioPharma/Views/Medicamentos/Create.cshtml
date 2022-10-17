@@ -8,7 +8,7 @@
 <div class="row-text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>Agregar nuevo medicamento</h1>
+            <h1 class="text-center">Agregar Medicamentos</h1>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
@@ -20,37 +20,57 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Img_Medicamento" class="control-label"></label>
+                        <div class="input-group mb-3">
+                            <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-capsule"></i></span>
                         <input asp-for="Img_Medicamento" class="form-control" />
-                        <span asp-validation-for="Img_Medicamento" class="text-danger"></span>
-                    </div>
+                        </div>
+                        <span asp-validation-for="Img_Medicamento" class="text-danger"></span> 
                     <div class="form-group">
                         <label asp-for="Nombre" class="control-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-file-fill"></i></span>
                         <input asp-for="Nombre" class="form-control" />
+                        </div>
                         <span asp-validation-for="Nombre" class="text-danger"></span>
-                    </div>
                     <div class="form-group">
                         <label asp-for="Descripcion" class="control-label"></label>
+                                <div class="input-group mb-3">
+                                    <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-chat-left-text"></i></span>
                         <textarea asp-for="Descripcion" class="form-control"></textarea>
                         <span asp-validation-for="Descripcion" class="text-danger"></span>
                     </div>
+
                     <div class="form-group">
                         <label asp-for="Precio" class="control-label"></label>
+                                    <div class="input-group mb-3">
+                                        <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-currency-dollar"></i></span>
                         <input asp-for="Precio" class="form-control" />
+                        </div>
                         <span asp-validation-for="Precio" class="text-danger"></span>
                     </div>
+
                     <div class="form-group">
                         <label asp-for="Existencias" class="control-label"></label>
+                                    <div class="input-group mb-3">
+                                        <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-archive"></i></span>
                         <input asp-for="Existencias" class="form-control" />
+                        </div>
                         <span asp-validation-for="Existencias" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Presentacion" class="control-label"></label>
+                                    <div class="input-group mb-3">
+                                        <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-prescription"></i></span>
                         <input asp-for="Presentacion" class="form-control" />
+                        </div>
                         <span asp-validation-for="Presentacion" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Img_Composicion" class="control-label"></label>
+                                    <div class="input-group mb-3">
+                                        <span class="text-white input-group-text" style="background-color: #0D6EFD;" id="basic-addon1"><i class="bi bi-file-earmark-medical"></i></span>
                         <input asp-for="Img_Composicion" class="form-control" />
+                        </div>
                         <span asp-validation-for="Img_Composicion" class="text-danger"></span>
                     </div>
                     <div class="form-group text-center">
@@ -62,9 +82,9 @@
                     </div>
 
 
-                    <div class="form-group">
-                        <input type="submit" value="Crear" class="btn btn-outline-success float-right" />
-                        <a class="btn btn-outline-secondary" asp-action="Index2">Regresar</a>
+                      <div class="form-group vstack gap-2 col-md-5 mx-auto mt-4">
+                                    <input type="submit" value="Crear" class="btn btn-outline-dark float-right" />
+                        <a class="btn btn-outline-dark" asp-action="Index2">Regresar</a>
                     </div>
                 </form>
             </div>
