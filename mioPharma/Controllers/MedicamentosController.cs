@@ -70,6 +70,17 @@ namespace mioPharma.Controllers
           
         }
 
+        public async Task <IActionResult> Filter(string searchString)
+        {
+            var AllMedicamentos = await _service.GetAllAsync();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResult = AllMedicamentos.Where(n => n.Nombre.Contains(searchString) || n.Presentacion.Contains(searchString)).ToList();
+                return View("Index", filteredResult);
+            }
+            return View("Index", AllMedicamentos);
+        }
+
         [HttpGet]
         public async Task<IActionResult> EditState(int id, string state)
         {
