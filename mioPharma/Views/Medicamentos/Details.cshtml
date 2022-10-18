@@ -12,29 +12,30 @@
         <div class="col">
             <div class="mt-5">
                 <div class="pt-5">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
-                        <div class="img-thumbnail">
-                            <div class="carousel-item active">
-                                <img width="200" height="375" class="d-block w-100" src="@Model.Img_Medicamento" />
-                            </div>
-                            <div class="rounded mx-auto d-block"
-                                <img width="200" height="375" class="d-block w-100" src="@Model.Img_Composicion" />
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                    @* <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
+                    <div class="img-thumbnail">
+                    <div class="carousel-item active">
+                    <img width="200" height="375" class="d-block w-100" src="@Model.Img_Medicamento" />
+                    </div>
+                    <div class="rounded mx-auto d-block"
+                    <img width="200" height="375" class="d-block w-100" src="@Model.Img_Composicion" />
+                    </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                    </div>*@
+                      <img src="@Model.Img_Medicamento" width="300" height="370">
                 </div>
             </div>
         </div>
@@ -43,22 +44,23 @@
                 <div class="card-header text-white" style="background-color: #0D6EFD;">
                     Detalles de @Model.Nombre
                 </div>
-               
+
                 <div class="card-body">
-                    <h5 class="card-title">Descripcion</h5>
+                    <h5 class="card-title">Descripción</h5>
                     <p class="card-text">@Model.Descripcion</p>
                     <p><b>Existencias</b></p>
-                  <p class="text">@Model.Existencias</p>
-                    
-                   
-                    <p><b>Presentacion</b></p>
-                        <p class="text">@Model.Presentacion</p>
+                    <p class="text">@Model.Existencias</p>
+
+
+                    <p><b>Presentación</b></p>
+                    <p class="text">@Model.Presentacion</p>
+                    <p><b>Composición</b></p>
                     <div class="col-md-12">
-                        <center> <img src="@Model.Img_Composicion" width="250px" height="300px">
+                        <img src="@Model.Img_Composicion" width="150" height="200">
                     </div>
                 </div>
-                <div class="card-footer text-white" style="background-color: ;">
-                    $@Model.Precio
+                <div class="card-footer text-white" style="background-color:#0D6EFD;">
+                    <p class="text">$@Model.Precio</p>
                 </div>
             </div>
         </div>
