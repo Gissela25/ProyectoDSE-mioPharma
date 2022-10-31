@@ -16,6 +16,12 @@ namespace mioPharma.Controllers
             _carritoCompra = carritoCompra;
             _ordenesService = ordenesService;
         }
+        public async Task<IActionResult> Index()
+        {
+            string userId = "";
+            var ordenes = await _ordenesService.GetOrdenByUserIdAsync(userId);
+            return View(ordenes);
+        }
 
         public IActionResult Carrito()
         {

@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 navbar-dark" style="background-color: #000000;">
+@*    style="background-color: #4ABD4D;
+*@    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 navbar-dark bg-primary">
                @* <a class="navbar-brand" asp-controller="Destinos" asp-action="Index"><i class="bi bi-airplane-fill"></i></a>*@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -33,6 +34,9 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Medicamentos" asp-action="Index2">Productos</a>
                         </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Ordenes" asp-action="Index">Ordenes</a>
+                    </li>
                     </ul>
                      <form class="hstack gap-3" asp-controller="Medicamentos" asp-action="Filter" style="padding-right: 25px;">
                     <input style="display:flex" name="searchString" type="text" class="form-control me-auto" placeholder="Search ..." aria-label="Recipient's username" aria-describedby="button-addon2">

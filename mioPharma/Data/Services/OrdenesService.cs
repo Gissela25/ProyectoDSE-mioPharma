@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using mioPharma.Models;
 
 namespace mioPharma.Data.Services
@@ -11,6 +12,8 @@ namespace mioPharma.Data.Services
         {
             _context = context;
         }
+
+        
 
         public async Task<List<Orden>> GetOrdenByUserIdAsync(string userId)
         {
@@ -34,7 +37,7 @@ namespace mioPharma.Data.Services
                 {
                     Cantidad = item.Cantidad,
                     MedicamentoId = item.Medicamento.Id,
-                    OrdenId = item.Id,
+                    OrdenId = orden.Id,
                     Precio = item.Medicamento.Precio
                 };
                 await _context.OrdenItems.AddAsync(ordenItem);
