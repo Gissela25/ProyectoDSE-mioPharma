@@ -12,41 +12,40 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
-@*    style="background-color: #4ABD4D;
-*@    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 navbar-dark bg-primary">
-               @* <a class="navbar-brand" asp-controller="Destinos" asp-action="Index"><i class="bi bi-airplane-fill"></i></a>*@
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Medicamentos" asp-action="Index">Medicamentos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Medicamentos" asp-action="Index2">Productos</a>
-                        </li>
+    @*    style="background-color: #4ABD4D;
+    *@
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" style="background-color: #45B449;">
+            @* <a class="navbar-brand" asp-controller="Destinos" asp-action="Index"><i class="bi bi-airplane-fill"></i></a>*@
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-">
+                    <img src="https://miopharma-dse.000webhostapp.com/img/Logotipomp.png" width="150" height="40">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Ordenes" asp-action="Index">Ordenes</a>
+                        <a class="nav-link active" asp-area="" asp-controller="Medicamentos" asp-action="Index">Medicamentos</a>
                     </li>
-                    </ul>
-                     <form class="hstack gap-3" asp-controller="Medicamentos" asp-action="Filter" style="padding-right: 25px;">
-                    <input style="display:flex" name="searchString" type="text" class="form-control me-auto" placeholder="Search ..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button style="display:flex" class="btn btn-outline-warning text-white my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
-                    </form>
-
-                <ul class="navbar-nav text-light">
-                    @await Component.InvokeAsync("ResumenCarritoCompra")
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-area="" asp-controller="Medicamentos" asp-action="Index2">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-area="" asp-controller="Ordenes" asp-action="Index">Ordenes</a>
+                    </li>
+                      @await Component.InvokeAsync("ResumenCarritoCompra")
                 </ul>
-                </div>
+                <form class="hstack gap-3" asp-controller="Medicamentos" asp-action="Filter" style="padding-right: 25px;">
+                    <input style="display:flex" name="searchString" type="text" class="form-control me-auto" placeholder="Search ..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button style="display:flex" class="btn btn-outline-secondary text-white" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
             </div>
         </nav>
     </header>
@@ -64,7 +63,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    
+
     @*Enlaces nuevos *@
 
     <script src="~/lib/jquery/dist/jquery.js"></script>

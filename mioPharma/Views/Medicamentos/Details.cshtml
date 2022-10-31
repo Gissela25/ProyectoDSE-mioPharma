@@ -12,36 +12,13 @@
         <div class="col">
             <div class="mt-5">
                 <div class="pt-5">
-                    @* <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                    <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="img-thumbnail">
-                    <div class="carousel-item active">
-                    <img width="200" height="375" class="d-block w-100" src="@Model.Img_Medicamento" />
-                    </div>
-                    <div class="rounded mx-auto d-block"
-                    <img width="200" height="375" class="d-block w-100" src="@Model.Img_Composicion" />
-                    </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                    </button>
-                    </div>*@
                       <img src="@Model.Img_Medicamento" width="300" height="370">
                 </div>
             </div>
         </div>
         <div class="col-8 col-sm-6">
             <div class="card text-center">
-                <div class="card-header text-white" style="background-color: #0D6EFD;">
+                <div class="card-header text-white" style="background-color:#2D3589">
                     Detalles de @Model.Nombre
                 </div>
 
@@ -59,8 +36,8 @@
                         <img src="@Model.Img_Composicion" width="150" height="200">
                     </div>
                 </div>
-                <div class="card-footer text-white" style="background-color:#0D6EFD;">
-                    <a class="btn text-white mx-auto  @((Model.Existencias <= 0)? "disabled" : "")" asp-route-id="@Model.Id" asp-controller="Ordenes" asp-action="AddItemToCarritoOfCompras"><i class="bi bi-cart-plus"></i> <p class="text">Añadir al carro  ($@Model.Precio)</p></a>
+                <div class="card-footer text-white">
+                    <a class="btn text-white @((Model.Existencias <= 0)? "disabled" : "")"  style="background-color: #45B449;" asp-route-id="@Model.Id" asp-controller="Ordenes" asp-action="AddItemToCarritoOfCompras"><i class="bi bi-cart-plus"></i> <p class="text">Agregar Carrito ($@Model.Precio)</p></a>
                    
                 </div>
             </div>

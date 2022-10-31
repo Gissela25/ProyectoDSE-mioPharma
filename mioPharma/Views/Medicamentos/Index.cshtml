@@ -12,7 +12,7 @@
                 <div class="card mb-3 mt-4" style="max-width: 305px;">
                     <div class="row g-0">
                         <div class="col-md-12 mb-4">
-                            <div class="card-header text-white" style=" background-color: #0D6EFD;">
+                            <div class="card-header text-white" style="background-color: #2D3589;">
                                 <p class="card-text ">
                                     <h5 class="card-title">
                                         @item.Nombre
@@ -58,8 +58,8 @@
                             <div class="card-footer ">
                                 <p class="card-text">
 
-                                    <a class=" btn btn-outline-dark float-right" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i>Detalles</a>
-                                    <a class="btn btn-success text-white" asp-controller="Ordenes" asp-action="AddItemToCarritoOfCompras" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+                                    <a class=" btn text-white float-right" style="background-color: #2D3589;" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i>Ver mas</a>
+                                    <a class="btn text-white" style="background-color: #45B449;" asp-controller="Ordenes" asp-action="AddItemToCarritoOfCompras" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i>Agregar al carrito</a>
                                     @*        <a class="btn btn-warning" asp-controller="Reservaciones" asp-action="Create" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Reservar</a>*@
                                 </p>
                             </div>
