@@ -60,7 +60,8 @@
                     </div>
                 </div>
                 <div class="card-footer text-white" style="background-color:#0D6EFD;">
-                    <p class="text">$@Model.Precio</p>
+                    <a class="btn text-white mx-auto  @((Model.Existencias <= 0)? "disabled" : "")" asp-route-id="@Model.Id" asp-controller="Ordenes" asp-action="AddItemToCarritoOfCompras"><i class="bi bi-cart-plus"></i> <p class="text">Añadir al carro  ($@Model.Precio)</p></a>
+                   
                 </div>
             </div>
         </div>

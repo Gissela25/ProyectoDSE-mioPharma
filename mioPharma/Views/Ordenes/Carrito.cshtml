@@ -2,13 +2,13 @@
 @model CarritoCompraVM
 
 @{
-    ViewData["Title"] = "Resumen de lista de Compras";
+    ViewData["Title"] = "Resumen de carrito de compras";
 }
 
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="text-center">
-            <h2>You Shopping cart summary</h2>
+            <h2>Resumen de tu carrito de compras</h2>
         </div>
         <table class="table">
             <thead>
@@ -29,8 +29,8 @@
                         <td class="align-middle">@item.Medicamento.Precio.ToString("c")</td>
                         <td class="align-middle">@((item.Cantidad * item.Medicamento.Precio).ToString("c"))</td>
                         <td class="align-middle">
-                            <a class="text-danger" asp-controller="Ordenes" asp-action="RemoveItemFromCarritoOfCompras" asp-route-id="@item.Medicamento.Id"><i class="bg-info bi-cart-dash"></i></a>
-                            <a class="text-success" asp-controller="Ordenes" asp-action="AddItemToCarritoOfCompras" asp-route-id="@item.Medicamento.Id"><i class="bg-info bi-cart-plus"></i></a>
+                            <a class="text-danger" asp-controller="Ordenes" asp-action="RemoveItemFromCarritoOfCompras" asp-route-id="@item.Medicamento.Id"><i class=" bi-cart-dash"></i></a>
+                            <a class="text-success" asp-controller="Ordenes" asp-action="AddItemToCarritoOfCompras" asp-route-id="@item.Medicamento.Id"><i class=" bi-cart-plus"></i></a>
                         </td>
                     </tr>
                 }
