@@ -14,5 +14,9 @@ namespace mioPharma.Data
         public DbSet<Medicamento> Medicamentos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
 
+        public DbSet<Orden> Ordens { get; set; }
+        public DbSet<OrdenItem> OrdenItems { get; set; }
+        public DbSet<CarritoCompraItem> CarritoCompraItems { get; set; }
+
     }
 }

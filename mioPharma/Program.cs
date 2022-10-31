@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using mioPharma.Data;
+using mioPharma.Data.Cart;
 using mioPharma.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,10 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 builder.Services.AddScoped<IUsuariosService, UsuariosService>();
 builder.Services.AddScoped<IClientesService, ClientesService>();
 builder.Services.AddScoped<IMedicamentosService, MedicamentosService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<IOrdenesService, OrdenesService>();
+builder.Services.AddScoped(sc => CarritoCompra.GetCarritoCompra(sc));
+builder.Services.AddSession();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -28,7 +33,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(
