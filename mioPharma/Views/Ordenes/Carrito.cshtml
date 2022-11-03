@@ -45,11 +45,13 @@
                 </tr>
             </tfoot>
         </table>
-        <div class="text-center">
+        <div class="text-right">
             <div class="btn-group">
-                <a class="btn btn-outline-primary" asp-action="CompletarOrden">
-                    Completar Orden
-                </a>
+@*                <a class="btn btn-outline-primary" asp-action="CompletarOrden">
+                Completar Orden
+                </a>*@
+                <div id="paypal-btn"></div>
+                <span style="padding:5px"></span>
                 <a class="btn btn-outline-success" asp-controller="Medicamentos" asp-action="Index">Add more items</a>
             </div>
 
@@ -57,3 +59,50 @@
     </div>
 
 </div>
+
+@section scripts{
+
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+    <script>
+
+        let _total = @Html.Raw(Model.CarritoCompraTotal);
+
+        paypal.Button.render({
+            //Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'AfXNaEB1c7Gj0EXor0GIoy1pRj2VgiInvKe3XV_kzxFOowzvjBtBqnmtmP9mCCQ_QZdoESUdkO4ht-gi'
+            },
+
+            //Customize button
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill'
+            },
+            commit: true,
+
+            //Set up a payment
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: _total,
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+            //Execute the payment
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function () {
+                    var url = '@Url.Action("CompletarOrden", "Ordenes", new { })';
+                    window.location.href = url;
+                });
+            }
+
+        }, '#paypal-btn');
+    </script>
+ }
