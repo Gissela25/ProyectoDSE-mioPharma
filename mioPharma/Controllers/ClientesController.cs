@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using mioPharma.Data.Services;
 using mioPharma.Helpers;
 using mioPharma.Models;
 
 namespace mioPharma.Controllers
 {
+    [Authorize]
     public class ClientesController : Controller
     {
         private readonly IClientesService _service;

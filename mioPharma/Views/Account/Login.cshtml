@@ -1,0 +1,57 @@
+﻿@using mioPharma.Data.ViewModels
+@model LoginVM;
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <p>
+            <h4>Ingrese a su cuenta</h4>
+        </p>
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="col-md-12 alert alert-danger">
+                <span><b>Lo siento!</b> - @TempData["Error"] </span>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="EmailAddress" class="control-label"></label>
+                                <div class="input-group mb-3">
+                                    <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-envelope"></i></span>
+                                    <input placeholder="example@gmail.com" asp-for="EmailAddress" class="form-control" />
+                                </div>
+                                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Password" class="form-label"></label>
+                                <div class="input-group mb-3">
+                                    <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-key"></i></span>
+                                    <input type="password" placeholder="Ingresa tu contraseña" asp-for="Password" class="form-control" />
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                     </div>
+
+                    <div class="col-md-12">
+                            <div class="form-group vstack gap-2 col-md-5 mx-auto mt-4">
+                                <input class="btn btn-outline-success float-right" type="submit" value="Log in" />
+                                <a class="btn" style="background-color:#2D3589; color:white" asp-action="Index" asp-controller="Medicamentos">Regresar</a>
+                                </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

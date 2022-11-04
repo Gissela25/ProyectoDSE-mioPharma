@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ApplicationUser>
+@{
+    ViewData["Title"] = "Lista de Usuarios";
+}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <p>
+            <h4>Lista de Usuarios</h4>
+        </p>
+        <div class="text-white" style="color:black;">
+            <a asp-controller="Clientes" asp-action="Create" class="btn btn-secondary"><i class="bi bi-file-earmark-plus"></i></a>
+        </div>
+        <table id="table" class="table">
+            <thead>
+                <tr class="text-center text-white" style="background-color: #2D3589;">
+                    <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                    <th>@Html.DisplayNameFor(model => model.Apellido)</th>
+                    <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Apellido)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+        });
+    </script>
+}

@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using mioPharma.Data.Cart;
 using mioPharma.Data.Services;
 using mioPharma.Data.ViewModels;
+using System.Security.Claims;
 
 namespace mioPharma.Controllers
 {
+    [Authorize]
     public class OrdenesController : Controller
     {
         private readonly IMedicamentosService _medicamentosService;
@@ -18,8 +21,9 @@ namespace mioPharma.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            string userId = "";
-            var ordenes = await _ordenesService.GetOrdenByUserIdAsync(userId);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userRole = User.FindFirstValue(ClaimTypes.Role);
+            var ordenes = await _ordenesService.GetOrdenByUserIdAndRoleAsync(userId, userRole);
             return View(ordenes);
         }
 
@@ -59,8 +63,8 @@ namespace mioPharma.Controllers
         public async Task<IActionResult> CompletarOrden()
         {
             var items = _carritoCompra.GetCarritoCompraItems();
-            string userId = "";
-            string userEmailAddress = "";
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userEmailAddress = User.FindFirstValue(ClaimTypes.Email);
 
             await _ordenesService.OrdenOfStoreAsync(items, userId, userEmailAddress);
             await _carritoCompra.ClearCarritoCompraAsync();

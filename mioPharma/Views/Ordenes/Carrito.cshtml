@@ -10,12 +10,12 @@
         <div class="text-center">
             <h2>Resumen de tu carrito de compras</h2>
         </div>
-        <table class="table">
+        <table id="table" class="table">
             <thead>
                 <tr style="background-color:#2D3589; color:white;">
-                    <th>Selected amount</th>
-                    <th>Movie</th>
-                    <th>Price</th>
+                    <th>Cantidad Seleccionada</th>
+                    <th>Medicamentos</th>
+                    <th>Precio</th>
                     <th>Subtotal</th>
                     <th></th>
                 </tr>
@@ -105,4 +105,12 @@
 
         }, '#paypal-btn');
     </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+        });
+    </script>
+}
  }

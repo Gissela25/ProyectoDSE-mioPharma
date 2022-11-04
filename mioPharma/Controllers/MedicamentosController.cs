@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mioPharma.Data;
 using mioPharma.Data.Services;
+using mioPharma.Data.Static;
 using mioPharma.Models;
 
 namespace mioPharma.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class MedicamentosController : Controller
     {
         private readonly IMedicamentosService _service;
@@ -14,6 +17,7 @@ namespace mioPharma.Controllers
         {
             _service = service;
         }
+        [AllowAnonymous]
       
         public async Task<IActionResult> Index()
         {
@@ -41,6 +45,8 @@ namespace mioPharma.Controllers
             return RedirectToAction(nameof(Index2));
         }
 
+
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var medicamentoDetails = await _service.GetByIdAsync(id);
@@ -70,6 +76,7 @@ namespace mioPharma.Controllers
           
         }
 
+        [AllowAnonymous]
         public async Task <IActionResult> Filter(string searchString)
         {
             var AllMedicamentos = await _service.GetAllAsync();

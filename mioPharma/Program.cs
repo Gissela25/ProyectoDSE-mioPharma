@@ -1,7 +1,11 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using mioPharma.Data;
 using mioPharma.Data.Cart;
 using mioPharma.Data.Services;
+using mioPharma.Models;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +21,15 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IOrdenesService, OrdenesService>();
 builder.Services.AddScoped(sc => CarritoCompra.GetCarritoCompra(sc));
 builder.Services.AddSession();
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddMemoryCache();
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+});
 
 var app = builder.Build();
 
@@ -34,10 +46,15 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}/{state?}");
+AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
 
 app.Run();

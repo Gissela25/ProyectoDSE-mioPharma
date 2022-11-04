@@ -10,12 +10,16 @@
             <h4>Todas mis ordenes</h4>
         </p>
 
-        <table class="table">
+        <table id="table" class="table">
             <thead>
                 <tr style="background-color:#2D3589; color:white;">
                     <th>Order ID</th>
                     <th>Items</th>
                     <th>Total</th>
+                    @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <th>User</th>
+                    }
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +42,12 @@
                         <td class="align-middle">
                             @order.OrdenItems.Select(m => m.Medicamento.Precio * m.Cantidad).Sum().ToString("c")
                         </td>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                             <td class="align-middle">
+                                 @order.User.Nombre @order.User.Apellido
+                             </td>
+                        }
                     </tr>
                 }
             </tbody>
@@ -45,3 +55,10 @@
 
     </div>
 </div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+        });
+    </script>
+}

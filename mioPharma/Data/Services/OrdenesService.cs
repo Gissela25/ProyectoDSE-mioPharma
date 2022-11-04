@@ -15,9 +15,13 @@ namespace mioPharma.Data.Services
 
         
 
-        public async Task<List<Orden>> GetOrdenByUserIdAsync(string userId)
+        public async Task<List<Orden>> GetOrdenByUserIdAndRoleAsync(string userId, string userRole)
         {
-           var ordenes = await _context.Ordens.Include(n => n.OrdenItems).ThenInclude(n => n.Medicamento).Where(n => n.UserId == userId).ToListAsync();
+           var ordenes = await _context.Ordens.Include(n => n.OrdenItems).ThenInclude(n => n.Medicamento).Include( n => n.User).ToListAsync();
+            if(userRole != "Admin")
+            {
+                ordenes = ordenes.Where(n => n.UserId == userId).ToList();
+            }
             return ordenes;
         }
 

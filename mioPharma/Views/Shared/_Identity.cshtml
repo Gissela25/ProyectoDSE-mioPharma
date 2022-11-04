@@ -1,0 +1,61 @@
+﻿
+@inject UserManager<ApplicationUser> UserManager;
+@if(!User.Identity.IsAuthenticated)
+{
+    <li>
+        <a class="nav-link active" asp-controller="Account" asp-action="Login">
+            <i class="bi bi-box-arrow-in-right"></i> Log in
+        </a>
+
+    </li>
+    <li>
+        <a class="nav-link active" asp-controller="Account" asp-action="Register">
+            <i class="bi bi-person-plus"></i> Sign up
+        </a>
+    </li>
+}
+else{
+    @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="nav-link active" asp-area="" asp-controller="Medicamentos" asp-action="Index2">Productos</a>
+        </li>
+    }
+     <li class="nav-item">
+                <a class="nav-link active" asp-area="" asp-controller="Ordenes" asp-action="Index">Ordenes</a>
+     </li>
+    @await Component.InvokeAsync("ResumenCarritoCompra")
+    <div class="dropdown nav-item">
+        <button class="btn dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown"
+            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-person-badge"></i> Hola @UserManager.GetUserName(User)
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="profile-btn">
+            @if(User.IsInRole("Admin"))
+            {
+                <li>
+                    <a class="dropdown-item" asp-controller="Account" asp-action="Usuarios">
+                        <i class="bi bi-people"></i> Usuarios
+                    </a>
+                </li>
+            }
+            <li>
+                <a class="dropdown-item" asp-controller="Ordenes" asp-action="Index">
+                    <i class="bi bi-list"></i> Ordenes
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" asp-controller="Ordenes" asp-action="Carrito">
+                    <i class=" bi-cart4">
+                    </i> Carrito
+                </a>
+            </li>
+        </ul>
+    </div>
+    <form asp-controller="Account" asp-action="Logout" class="nav-item">
+        <button class="btn">
+            <i class="bi bi-box-arrow-in-right"></i> Log out
+        </button>
+    </form>
+}
+
