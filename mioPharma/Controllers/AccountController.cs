@@ -29,6 +29,43 @@ namespace mioPharma.Controllers
             return View(users);
         }
 
+        public IActionResult AddUser() => View(new RegisterVM());
+        [HttpPost]
+        public async Task<IActionResult> AddUser(RegisterVM registerVM)
+        {
+            if (!ModelState.IsValid) return View(registerVM);
+
+            var user = await _userManager.FindByEmailAsync(registerVM.EmailAddress);
+            if (user != null)
+            {
+                TempData["Error"] = "Este correo electrónico ya está en uso";
+                return View(registerVM);
+            }
+
+            var newUser = new ApplicationUser()
+            {
+                Nombre = registerVM.Nombre,
+                Email = registerVM.EmailAddress,
+                UserName = registerVM.Nombre.ToLower() + "." + registerVM.Apellido.ToLower(),
+                Apellido = registerVM.Apellido,
+                PhoneNumber = registerVM.PhoneNumber,
+                Address = registerVM.Address,
+            };
+            var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
+
+            if (newUserResponse.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(newUser, UserRoles.Admin);
+
+                return RedirectToAction("Usuarios");
+            }
+            List<IdentityError> errorList = newUserResponse.Errors.ToList();
+            var errors = string.Join(", ", errorList.Select(e => e.Description));
+            TempData["Error"] = errors;
+            return View(registerVM);
+
+        }
+
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Edit(string Id)

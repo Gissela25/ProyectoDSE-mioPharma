@@ -31,14 +31,7 @@ else{
             <i class="bi bi-person-badge"></i> Hola @UserManager.GetUserName(User)
         </button>
         <ul class="dropdown-menu" aria-labelledby="profile-btn">
-            @if(User.IsInRole("Admin"))
-            {
-                <li>
-                    <a class="dropdown-item" asp-controller="Account" asp-action="Usuarios">
-                        <i class="bi bi-people"></i> Usuarios
-                    </a>
-                </li>
-            }
+           
             <li>
                 <a class="dropdown-item" asp-controller="Ordenes" asp-action="Index">
                     <i class="bi bi-list"></i> Ordenes

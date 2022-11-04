@@ -29,6 +29,7 @@ namespace mioPharma.Data.ViewModels
 
         [Display(Name = "Email Address")]
         [Required(ErrorMessage = "Email address es requerido")]
+        [RegularExpression(@"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$", ErrorMessage = "El correo ingresado es invalido")]
         public string EmailAddress { get; set; }
 
         [Required(ErrorMessage = "Password es requerido")]
