@@ -54,6 +54,24 @@ namespace mioPharma.Controllers
 
         }
 
+        public IActionResult ChangePassword() => View(new ChangePasswordVM());
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string IdUser, ChangePasswordVM changePasswordVM)
+        {
+            var user = await _userManager.FindByIdAsync(IdUser);
+            if (!ModelState.IsValid) return View(changePasswordVM);
+            var newUserResponse = await _userManager.ChangePasswordAsync(user, changePasswordVM.CurrentPassword, changePasswordVM.Password);
+            if(newUserResponse.Succeeded)
+            {
+                return RedirectToAction("Index","Medicamentos");
+            }
+            List<IdentityError> errorList = newUserResponse.Errors.ToList();
+            var errors = string.Join(", ", errorList.Select(e => e.Description));
+            TempData["Error"] = errors;
+            return View(changePasswordVM);
+        }
+
         public IActionResult AddUser() => View(new RegisterVM());
         [HttpPost]
         public async Task<IActionResult> AddUser(RegisterVM registerVM)
@@ -143,6 +161,7 @@ namespace mioPharma.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
+           
             if (!ModelState.IsValid) return View(loginVM);
 
             var user = await _userManager.FindByEmailAsync(loginVM.EmailAddress);

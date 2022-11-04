@@ -18,11 +18,11 @@ else{
     @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
     {
         <li class="nav-item">
-            <a class="nav-link active" asp-area="" asp-controller="Medicamentos" asp-action="Index2">Productos</a>
+            <a class="nav-link active" asp-area="" asp-controller="Medicamentos" asp-action="Index2"><i class="bi bi-capsule-pill"></i> Productos</a>
         </li>
     }
      <li class="nav-item">
-                <a class="nav-link active" asp-area="" asp-controller="Ordenes" asp-action="Index">Ordenes</a>
+        <a class="nav-link active" asp-area="" asp-controller="Ordenes" asp-action="Index"><i class="bi bi-card-checklist"></i> Ordenes</a>
      </li>
     @await Component.InvokeAsync("ResumenCarritoCompra")
     <div class="dropdown nav-item">
@@ -46,6 +46,11 @@ else{
                 <a class="dropdown-item" asp-controller="Ordenes" asp-action="Carrito">
                     <i class=" bi-cart4">
                     </i> Carrito
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" asp-controller="Account" asp-action="ChangePassword">
+                    <i class="bi bi-key-fill"></i> Password
                 </a>
             </li>
         </ul>
