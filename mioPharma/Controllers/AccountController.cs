@@ -28,6 +28,31 @@ namespace mioPharma.Controllers
             var users = await _context.Users.ToListAsync();
             return View(users);
         }
+        [HttpPost]
+        public async Task<IActionResult> UpdateState(string IdUser)
+        {
+            var user = await _userManager.FindByIdAsync(IdUser);
+            if(user.UserState == 1)
+            {
+                user.UserState = 0;
+            }
+            else
+            {
+                user.UserState = 1;
+            }
+           
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Usuarios", "Account");
+            }
+            else
+            {
+                ViewBag.Error = "Ha ocurrido un error";
+                return RedirectToAction("Usuarios","Account");
+            }
+
+        }
 
         public IActionResult AddUser() => View(new RegisterVM());
         [HttpPost]
@@ -50,6 +75,8 @@ namespace mioPharma.Controllers
                 Apellido = registerVM.Apellido,
                 PhoneNumber = registerVM.PhoneNumber,
                 Address = registerVM.Address,
+                UserLvl = 1,
+                UserState = 1
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
@@ -121,17 +148,25 @@ namespace mioPharma.Controllers
             var user = await _userManager.FindByEmailAsync(loginVM.EmailAddress);
             if (user != null)
             {
-                var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
-                if (passwordCheck)
+                if (user.UserState != 0)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
-                    if (result.Succeeded)
+                    var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
+                    if (passwordCheck)
                     {
-                        return RedirectToAction("Index", "Medicamentos");
-                    }
-                    TempData["Error"] = "Credenciales incorrectas. Inténtalo de nuevo";
-                    return View(loginVM);
+                        var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+                        if (result.Succeeded)
+                        {
+                            return RedirectToAction("Index", "Medicamentos");
+                        }
+                        TempData["Error"] = "Credenciales incorrectas. Inténtalo de nuevo";
+                        return View(loginVM);
 
+                    }
+                }
+                else
+                {
+                    TempData["Error"] = "Cuenta deshabilitada";
+                    return View(loginVM);
                 }
             }
             TempData["Error"] = "Credenciales incorrectas. Inténtalo de nuevo";
@@ -161,6 +196,8 @@ namespace mioPharma.Controllers
                 Apellido = registerVM.Apellido,
                 PhoneNumber = registerVM.PhoneNumber,
                 Address = registerVM.Address,
+                UserLvl = 0,
+                UserState = 1
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 

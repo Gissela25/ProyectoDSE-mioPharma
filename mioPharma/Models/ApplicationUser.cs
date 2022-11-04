@@ -21,5 +21,9 @@ namespace mioPharma.Models
         [RegularExpression("^([0-9A-Za-z#/\\()&._*,&!¡?¿|°-]+[ ]?[0-9A-Za-z#/\\()&._*,&!¡?¿|°-])+$", ErrorMessage = "Caracter especial desconocido o direccion demasiado larga")]
         [StringLength(250, ErrorMessage = "Número máximo de letras superado")]
         public string Address { get; set; }
+
+        public int UserLvl { get; set; }
+
+        public int UserState { get; set; }
     }
 }

@@ -35,7 +35,9 @@ namespace mioPharma.Data
                         EmailConfirmed = true,
                         Apellido = "User",
                         Address = "Miopharma",
-                        PhoneNumber = "2055-6000"
+                        PhoneNumber = "2055-6000",
+                        UserLvl = 1,
+                        UserState = 1
                     };
                     await userManager.CreateAsync(newAdminUser, "P4$$w0rd");
                     await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
@@ -55,7 +57,9 @@ namespace mioPharma.Data
                         EmailConfirmed = true,
                         Apellido= "User",
                         Address = "Miopharma",
-                        PhoneNumber = "2055-6000"
+                        PhoneNumber = "2055-6000",
+                        UserLvl= 0,
+                        UserState= 1
                     };
                     await userManager.CreateAsync(newAppUser, "P4$$w0rd");
                     await userManager.AddToRoleAsync(newAppUser, UserRoles.User);

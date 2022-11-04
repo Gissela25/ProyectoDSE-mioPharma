@@ -6,8 +6,9 @@
     <div class="col-md-10 offset-md-1">
         <p>
             <h4>Lista de Usuarios</h4>
+            <p class="text-danger">@ViewBag.Error</p>
         </p>
-        <div class="text-white" style="color:black;">
+        <div class="text-white my-3" style="color:black;">
             <a asp-controller="Account" asp-action="AddUser" class="btn btn-secondary"><i class="bi bi-file-earmark-plus"></i> Agregar Administrador</a>
         </div>
         <table id="table" class="table">
@@ -17,6 +18,8 @@
                     <th>@Html.DisplayNameFor(model => model.Apellido)</th>
                     <th>@Html.DisplayNameFor(model => model.UserName)</th>
                     <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <th>Rol</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +37,27 @@
                         </td>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        @if(item.UserLvl == 1)
+                        {
+                            <td class="align-middle">Admin</td>
+                        }
+                        else{
+                            <td class="align-middle">User</td>
+                        }
+                        <td class="align-middle">
+                            
+                            <form asp-controller="Account" asp-action="UpdateState">
+                                <input hidden value="@item.Id" name="IdUser" />
+                            @if (item.UserState == 1)
+                            {
+                                    <button class="btn btn-success"> <i class="bi bi-check-lg"></i></button>
+                            }
+                            else
+                            {
+                                    <button class="btn btn-warning"><i class="bi bi-x-lg"></i></button>
+                            }
+                            </form>
                         </td>
                     </tr>
                 }

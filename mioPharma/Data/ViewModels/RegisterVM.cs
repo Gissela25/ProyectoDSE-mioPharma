@@ -41,5 +41,9 @@ namespace mioPharma.Data.ViewModels
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Passwords no coincidentes")]
         public string ConfirmPassword { get; set; }
+
+        public int UserLvl { get; set; }
+
+        public int UserState { get; set; }
     }
 }
