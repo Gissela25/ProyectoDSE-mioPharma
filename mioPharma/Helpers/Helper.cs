@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace mioPharma.Helpers
 {
-    public class Encrypt
+    public class Helper
     {
         public static string GetSHA256(string str)
         {
@@ -26,7 +26,6 @@ namespace mioPharma.Helpers
         {
             return Regex.IsMatch(phone, @"[267][0-9]{3}-?[0-9]{4}");
         }
-
         public static string CreateUserNAme(string name, string apellido)
         {
             string tempUserName = name.ToLower() + "." + apellido.ToLower();

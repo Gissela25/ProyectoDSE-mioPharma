@@ -45,6 +45,11 @@ else{
                 </a>
             </li>
             <li>
+                <a class="dropdown-item" asp-controller="Account" asp-action="Edit" asp-route-id="@UserManager.GetUserId(User)">
+                    <i class="bi bi-pencil"></i> Editar
+                </a>
+            </li>
+            <li>
                 <a class="dropdown-item" asp-controller="Ordenes" asp-action="Carrito">
                     <i class=" bi-cart4">
                     </i> Carrito

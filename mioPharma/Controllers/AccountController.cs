@@ -6,7 +6,8 @@ using mioPharma.Data.ViewModels;
 using mioPharma.Data;
 using mioPharma.Models;
 using Microsoft.EntityFrameworkCore;
-
+using System.Text.RegularExpressions;
+using mioPharma.Helpers;
 namespace mioPharma.Controllers
 {
     [Authorize(Roles = UserRoles.Admin)]
@@ -27,6 +28,51 @@ namespace mioPharma.Controllers
             var users = await _context.Users.ToListAsync();
             return View(users);
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IActionResult> Edit(string Id)
+        {
+            var users = await _userManager.Users.Where(u => u.Id == Id).FirstOrDefaultAsync();
+            return View(users);
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Edit(ApplicationUser applicationUser)
+        {
+            if (!ModelState.IsValid) return View(applicationUser);
+            if (applicationUser.Email == null || applicationUser.PhoneNumber == null)
+            {
+                TempData["Error"] = "Parece que te falta algún campo por completar :)";
+                return View(applicationUser);
+            }
+            else if (!Helper.ValidateEmail(applicationUser.Email))
+            {
+                TempData["Error_Email"] = "Parece que tu Email Address no cumple con el formato :(";
+                return View(applicationUser);
+            }
+            else if (!Helper.ValidatePhoneNumber(applicationUser.PhoneNumber))
+            {
+                TempData["Error_Phone"] = "Parece que tu Teléfono no cumple con el formato :(";
+                return View(applicationUser);
+            }
+            var user = await _userManager.FindByIdAsync(applicationUser.Id);
+            user.Nombre = applicationUser.Nombre;
+            user.Apellido = applicationUser.Apellido;
+            user.Email = applicationUser.Email;
+            user.PhoneNumber = applicationUser.PhoneNumber;
+            user.Address = applicationUser.Address;
+            user.UserName = Helper.CreateUserNAme(applicationUser.Nombre, applicationUser.Apellido);
+          
+            var result = await _userManager.UpdateAsync(user);
+            if(result.Succeeded)
+            {
+                return RedirectToAction("Index","Medicamentos");
+            }
+            TempData["Error"] = "Ops! Hubo un problema al intentar actualizar tu cuenta";
+            return View(applicationUser);
+        }
+
         [AllowAnonymous]
         public IActionResult Login() => View(new LoginVM());
         [AllowAnonymous]
@@ -106,5 +152,7 @@ namespace mioPharma.Controllers
         {
             return View();
         }
+
+
     }
 }

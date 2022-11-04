@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using mioPharma.Data.Services;
-using mioPharma.Helpers;
 using mioPharma.Models;
 
 namespace mioPharma.Controllers
@@ -22,22 +21,22 @@ namespace mioPharma.Controllers
             return View(allClients);
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Create([Bind("Nombre, Apellido, Telefono, Direccion, Correo, Clave, EstadoC")] Cliente cliente)
-        {
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public async Task<IActionResult> Create([Bind("Nombre, Apellido, Telefono, Direccion, Correo, Clave, EstadoC")] Cliente cliente)
+        //{
 
-            if (ModelState.IsValid)
-            {
-                cliente.Clave = Encrypt.GetSHA256(cliente.Clave);
-                await _service.AddAsync(cliente);
-                return RedirectToAction("Index");
-            }
-            return View(cliente);
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        cliente.Clave = Encrypt.GetSHA256(cliente.Clave);
+        //        await _service.AddAsync(cliente);
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(cliente);
+        //}
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -65,27 +64,27 @@ namespace mioPharma.Controllers
             if (clientesDetails == null) return View("NotFound");
             return View(clientesDetails);
         }
-        [HttpPost, ActionName("EditPassword")]
-        public async Task<IActionResult> EditPassswordConfirmed(int id, [Bind("Id, Nombre, Apellido, Telefono, Direccion, Correo, Clave, EstadoC")] Cliente user, string currentPassword, string newPassword)
-        {
-            if(ModelState.IsValid)
-            {
+        //[HttpPost, ActionName("EditPassword")]
+        //public async Task<IActionResult> EditPassswordConfirmed(int id, [Bind("Id, Nombre, Apellido, Telefono, Direccion, Correo, Clave, EstadoC")] Cliente user, string currentPassword, string newPassword)
+        //{
+        //    if(ModelState.IsValid)
+        //    {
 
-                    currentPassword = Encrypt.GetSHA256(currentPassword);
-                    if (currentPassword == user.Clave)
-                    {
-                        user.Clave = Encrypt.GetSHA256(newPassword);
-                        await _service.UpdateStateAsync(id, user);
-                        return RedirectToAction(nameof(Index));
-                    }
-                    else
-                    {
-                        ViewBag.MessageError = "Ups, parece que hubo un problema al intentar actualizar tu contraseña";
-                    }
-            }
-            return View(user);
+        //            currentPassword = Encrypt.GetSHA256(currentPassword);
+        //            if (currentPassword == user.Clave)
+        //            {
+        //                user.Clave = Encrypt.GetSHA256(newPassword);
+        //                await _service.UpdateStateAsync(id, user);
+        //                return RedirectToAction(nameof(Index));
+        //            }
+        //            else
+        //            {
+        //                ViewBag.MessageError = "Ups, parece que hubo un problema al intentar actualizar tu contraseña";
+        //            }
+        //    }
+        //    return View(user);
 
-        }
+        //}
 
         [HttpGet]
         public async Task<IActionResult> EditState(int id, string state)

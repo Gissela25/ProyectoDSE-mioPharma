@@ -29,12 +29,13 @@ namespace mioPharma.Data
                 {
                     var newAdminUser = new ApplicationUser()
                     {
-                        Nombre = "Admin User",
+                        Nombre = "Admin",
                         UserName = "admin.user",
                         Email = adminUserEmail,
                         EmailConfirmed = true,
-                        Apellido = "-",
-                        Address = ""
+                        Apellido = "User",
+                        Address = "Miopharma",
+                        PhoneNumber = "2055-6000"
                     };
                     await userManager.CreateAsync(newAdminUser, "P4$$w0rd");
                     await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
@@ -48,12 +49,13 @@ namespace mioPharma.Data
                 {
                     var newAppUser = new ApplicationUser()
                     {
-                        Nombre = "Application User",
+                        Nombre = "Application",
                         UserName = "app.user",
                         Email = appUserEmail,
                         EmailConfirmed = true,
-                        Apellido= "-",
-                        Address = ""
+                        Apellido= "User",
+                        Address = "Miopharma",
+                        PhoneNumber = "2055-6000"
                     };
                     await userManager.CreateAsync(newAppUser, "P4$$w0rd");
                     await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
