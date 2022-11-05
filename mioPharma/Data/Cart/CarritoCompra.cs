@@ -78,6 +78,7 @@ namespace mioPharma.Data.Cart
             var items = await _context.CarritoCompraItems.Where(n => n.CarritoCompraId == CarritoCompraId).ToListAsync();
             _context.CarritoCompraItems.RemoveRange(items);
             await _context.SaveChangesAsync();
+            CarritoCompraItems = new List<CarritoCompraItem>();
         }
 
     }

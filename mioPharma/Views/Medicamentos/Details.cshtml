@@ -27,8 +27,15 @@
                     <p class="card-text">@Model.Descripcion</p>
                     <p><b>Existencias</b></p>
                     <p class="text">@Model.Existencias</p>
-
-
+                    <p><b>Disponibilidad</b></p>
+                    @if (Model.Existencias > 0)
+                    {
+                        <p class="text-success"><i class="bi bi-emoji-smile"></i> En Stock</p>
+                    }
+                    else
+                    {
+                        <p class="text-danger"><i class="bi bi-emoji-frown"></i> Agotado</p>
+                    }
                     <p><b>Presentación</b></p>
                     <p class="text">@Model.Presentacion</p>
                     <p><b>Composición</b></p>

@@ -16,7 +16,10 @@
                                 <p class="card-text ">
                                     <h5 class="card-title">
                                         @item.Nombre
-                                        @*<a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>*@
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                        {
+                                            <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                        }
 
                                     </h5>
                                 </p>
@@ -51,6 +54,12 @@
                                 <p class="card-text" >
                                     <b> Precio: $</b>@item.Precio
                                     <b>Existencias:</b>@item.Existencias
+                                    <b>Disponibilidad: </b> @if(item.Existencias > 0){
+                                        <span class="text-success"><i class="bi bi-emoji-smile"></i> En Stock</span>
+                                    }
+                                    else{
+                                        <span class="text-danger"><i class="bi bi-emoji-frown"></i> Agotado</span>
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -59,8 +68,7 @@
                                 <p class="card-text">
 
                                     <a class=" btn text-white float-right" style="background-color: #2D3589;" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i>Ver mas</a>
-                                    <a class="btn text-white" style="background-color: #45B449;" asp-controller="Ordenes" asp-action="AddItemToCarritoOfCompras" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i>Agregar al carrito</a>
-                                    @*        <a class="btn btn-warning" asp-controller="Reservaciones" asp-action="Create" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Reservar</a>*@
+                                    <a class="btn text-white  @((item.Existencias <= 0)? "disabled" : "") " style="background-color: #45B449;" asp-controller="Ordenes" asp-action="AddItemToCarritoOfCompras" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i>Agregar al carrito</a>
                                 </p>
                             </div>
                         </div>

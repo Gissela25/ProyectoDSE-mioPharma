@@ -81,7 +81,8 @@ namespace mioPharma.Controllers
             var AllMedicamentos = await _service.GetAllAsync();
             if (!string.IsNullOrEmpty(searchString))
             {
-                var filteredResult = AllMedicamentos.Where(n => n.Nombre.Contains(searchString) || n.Presentacion.Contains(searchString)).ToList();
+                var filteredResult = AllMedicamentos.Where(n =>string.Equals(n.Nombre, searchString, StringComparison.CurrentCultureIgnoreCase)
+                || string.Equals(n.Presentacion, searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
                 return View("Index", filteredResult);
             }
             return View("Index", AllMedicamentos);

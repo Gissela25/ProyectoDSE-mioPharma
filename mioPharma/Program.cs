@@ -14,8 +14,6 @@ var builder = WebApplication.CreateBuilder(args);
 //DbContext configuration
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
-builder.Services.AddScoped<IUsuariosService, UsuariosService>();
-builder.Services.AddScoped<IClientesService, ClientesService>();
 builder.Services.AddScoped<IMedicamentosService, MedicamentosService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IOrdenesService, OrdenesService>();
