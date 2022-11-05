@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using mioPharma.Helpers;
 namespace mioPharma.Controllers
 {
-    [Authorize(Roles = UserRoles.Admin)]
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -23,11 +23,15 @@ namespace mioPharma.Controllers
             _signInManager = signInManager;
             _context = context;
         }
+        // Admins only
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Usuarios()
         {
             var users = await _context.Users.ToListAsync();
             return View(users);
         }
+        // Admins only
+        [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         public async Task<IActionResult> UpdateState(string IdUser)
         {
@@ -53,9 +57,9 @@ namespace mioPharma.Controllers
             }
 
         }
-
+        // Only for authenticated users
         public IActionResult ChangePassword() => View(new ChangePasswordVM());
-
+        // Only for authenticated users
         [HttpPost]
         public async Task<IActionResult> ChangePassword(string IdUser, ChangePasswordVM changePasswordVM)
         {
@@ -71,8 +75,11 @@ namespace mioPharma.Controllers
             TempData["Error"] = errors;
             return View(changePasswordVM);
         }
-
+        // Admins only
+        [Authorize(Roles = UserRoles.Admin)]
         public IActionResult AddUser() => View(new RegisterVM());
+        // Admins only
+        [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         public async Task<IActionResult> AddUser(RegisterVM registerVM)
         {
@@ -110,15 +117,14 @@ namespace mioPharma.Controllers
             return View(registerVM);
 
         }
-
-        [AllowAnonymous]
+        // Only for authenticated users
         [HttpGet]
         public async Task<IActionResult> Edit(string Id)
         {
             var users = await _userManager.Users.Where(u => u.Id == Id).FirstOrDefaultAsync();
             return View(users);
         }
-        [AllowAnonymous]
+        // Only for authenticated users
         [HttpPost]
         public async Task<IActionResult> Edit(ApplicationUser applicationUser)
         {
@@ -154,9 +160,10 @@ namespace mioPharma.Controllers
             TempData["Error"] = "Ops! Hubo un problema al intentar actualizar tu cuenta";
             return View(applicationUser);
         }
-
+        // Any user
         [AllowAnonymous]
         public IActionResult Login() => View(new LoginVM());
+        // Any user
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM loginVM)
@@ -192,8 +199,10 @@ namespace mioPharma.Controllers
             return View(loginVM);
 
         }
+        // Any user
         [AllowAnonymous]
         public IActionResult Register() => View(new RegisterVM());
+        // Any user
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterVM registerVM)
@@ -232,14 +241,14 @@ namespace mioPharma.Controllers
             return View(registerVM);
 
         }
-        [AllowAnonymous]
-
+        // Only for authenticated users
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Medicamentos");
         }
+        // Any user
         [AllowAnonymous]
         public IActionResult AccessDenied(string ReturnUrl)
         {

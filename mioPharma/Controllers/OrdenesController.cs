@@ -7,6 +7,7 @@ using System.Security.Claims;
 
 namespace mioPharma.Controllers
 {
+    // Only for authenticated users
     [Authorize]
     public class OrdenesController : Controller
     {

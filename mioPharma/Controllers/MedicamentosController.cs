@@ -17,6 +17,7 @@ namespace mioPharma.Controllers
         {
             _service = service;
         }
+        // Any user
         [AllowAnonymous]
       
         public async Task<IActionResult> Index()
@@ -24,19 +25,19 @@ namespace mioPharma.Controllers
             var allMedicamentos = await _service.GetAllAsync();
             return View(allMedicamentos);
         }
-       
+        // Admins only
         public async Task<IActionResult> Index2()
         {
             var allMedicamentos = await _service.GetAllAsync();
             return View(allMedicamentos);
         }
+        // Admins only
         public IActionResult Create()
         {
             return View();
         }
-
+        // Admins only
         [HttpPost]
-
         public async Task<IActionResult> Create([Bind("Nombre,Precio,Presentacion,Existencias,Descripcion,Img_Composicion,Img_Medicamento,EstadoM")]Medicamento medicamento)
         {
             if (!ModelState.IsValid) return View(medicamento);
@@ -44,8 +45,7 @@ namespace mioPharma.Controllers
             await _service.AddAsync(medicamento);
             return RedirectToAction(nameof(Index2));
         }
-
-
+        // Any user
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
@@ -53,16 +53,15 @@ namespace mioPharma.Controllers
             if (medicamentoDetails == null) return View("NotFound");
             return View(medicamentoDetails);
         }
-
+        // Admins user
         public async Task<IActionResult> Edit(int id)
         {
             var medicamentoDetails = await _service.GetByIdAsync(id);
             if (medicamentoDetails == null) return View("NotFound");
             return View(medicamentoDetails);
         }
-
+        // Admins user
         [HttpPost]
-
         public async Task<IActionResult> Edit(int id,[Bind("Id,Nombre,Precio,Presentacion,Existencias,Descripcion,Img_Composicion,Img_Medicamento,EstadoM")] Medicamento medicamento)
         {
             if (!ModelState.IsValid) return View(medicamento);
@@ -75,7 +74,7 @@ namespace mioPharma.Controllers
             return View(medicamento);
           
         }
-
+        // Any user
         [AllowAnonymous]
         public async Task <IActionResult> Filter(string searchString)
         {
@@ -87,7 +86,7 @@ namespace mioPharma.Controllers
             }
             return View("Index", AllMedicamentos);
         }
-
+        // Admins only
         [HttpGet]
         public async Task<IActionResult> EditState(int id, string state)
         {
@@ -96,7 +95,7 @@ namespace mioPharma.Controllers
             ViewBag.State = state;
             return View(clientesDetails);
         }
-
+        // Admins only
         [HttpPost, ActionName("EditState")]
         public async Task<IActionResult> EditConfirmed(int id, [Bind("Id,Nombre,Precio,Presentacion,Existencias,Descripcion,Img_Composicion,Img_Medicamento,EstadoM")] Medicamento medicamento)
         {
