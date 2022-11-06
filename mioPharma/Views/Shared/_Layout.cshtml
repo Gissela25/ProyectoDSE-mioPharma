@@ -15,17 +15,18 @@
     @*    style="background-color: #4ABD4D;
     *@
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" style="background-color: #45B449;">
-            @* <a class="navbar-brand" asp-controller="Destinos" asp-action="Index"><i class="bi bi-airplane-fill"></i></a>*@
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar  navbar-expand-lg border-bottom " style="background-color: #45B449;">
+              <div class="container-fluid">
+                   <a class="navbar-brand" asp-controller="Medicamentos" asp-action="Index">
+                        <img src="https://miopharma-dse.000webhostapp.com/img/Logotipomp.png" width="150" height="35" />
+                   </a>
+            <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-">
-                    <img src="https://miopharma-dse.000webhostapp.com/img/Logotipomp.png" width="150" height="40" />
+            <div class="collapse navbar-collapse  d-sm-inline-flex justify-content-between" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" asp-area="" asp-controller="Medicamentos" asp-action="Index"><i class="bi bi-capsule"></i> Medicamentos</a>
+                        <a class="nav-link active" aria-current="page" asp-controller="Medicamentos" asp-action="Index"><i class="bi bi-capsule"></i> Medicamentos</a>
                     </li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
@@ -33,23 +34,15 @@
                             <a class="nav-link active" asp-area="" asp-controller="Account" asp-action="Usuarios"> <i class="bi bi-people"></i> Usuarios</a>
                     </li>
                      }
-                    @*<li class="nav-item">
-                        <a class="nav-link active" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
-                    </li>*@
-                    
-                   @* <li class="nav-item">
-                        <a class="nav-link active" asp-area="" asp-controller="Ordenes" asp-action="Index">Ordenes</a>
-                    </li>*@
                     <partial name="_Identity.cshtml" />
                    
                 </ul>
 
-                <form class="hstack gap-3  my-2 my-lg-0" asp-controller="Medicamentos" asp-action="Filter" style="padding-right: 25px;">
+                <form class="hstack gap-3  d-flex my-2 my-lg-0" asp-controller="Medicamentos" asp-action="Filter" style="padding-right: 25px;">
                     <input style="display:flex" name="searchString" type="text" class="form-control me-auto" placeholder="Search ..." aria-label="Recipient's username" aria-describedby="button-addon2">
                     <button style="display:flex" class="btn btn-outline-secondary text-white" type="submit"><i class="bi bi-search"></i></button>
                 </form>
-               
-            </div>
+                </div>
             </div>
         </nav>
     </header>
