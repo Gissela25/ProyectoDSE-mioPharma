@@ -52,7 +52,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}/{state?}");
+    pattern: "{controller=Medicamentos}/{action=Index}/{id?}/{state?}");
 AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
 
 app.Run();
