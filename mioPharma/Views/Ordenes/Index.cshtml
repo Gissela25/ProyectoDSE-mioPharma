@@ -5,53 +5,55 @@
 }
 
 <div class="row">
-    <div class="col-md-8 offset-2">
+    <div class="col-md-8 offset-md-2">
         <p>
             <h4>Todas mis ordenes</h4>
         </p>
-
-        <table id="table" class="table">
-            <thead>
-                <tr style="background-color:#2D3589; color:white;">
-                    <th>Order ID</th>
-                    <th>Items</th>
-                    <th>Total</th>
-                    @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <th>User</th>
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var order in Model)
-                {
-                    <tr>
-                        <td class="align-middle">@order.Id</td>
-                        <td class="align-middle">
-                            <ul style="list-style-type:none">
-                                @foreach (var item in order.OrdenItems)
-                                {
-                                    <li>
-                                        <div class="alert alert-info" role="alert">
-                                            <span class="badge bg-success">@item.Cantidad</span> [@item.Precio.ToString("c")] - @item.Medicamento.Nombre
-                                        </div>
-                                    </li>
-                                }
-                            </ul>
-                        </td>
-                        <td class="align-middle">
-                            @order.OrdenItems.Select(m => m.Medicamento.Precio * m.Cantidad).Sum().ToString("c")
-                        </td>
+        <div class="table-responsive">
+            <table id="table" class="table">
+                <thead>
+                    <tr style="background-color:#2D3589; color:white;">
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Items</th>
+                        <th scope="col">Total</th>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
-                             <td class="align-middle">
-                                 @order.User.Nombre @order.User.Apellido
-                             </td>
+                            <th scope="col">User</th>
                         }
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td class="align-middle">@order.Id</td>
+                            <td class="align-middle">
+                                <ul style="list-style-type:none">
+                                    @foreach (var item in order.OrdenItems)
+                                    {
+                                        <li>
+                                            <div class="alert alert-info" role="alert">
+                                                <span class="badge bg-success">@item.Cantidad</span> [@item.Precio.ToString("c")] - @item.Medicamento.Nombre
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </td>
+                            <td class="align-middle">
+                                @order.OrdenItems.Select(m => m.Medicamento.Precio * m.Cantidad).Sum().ToString("c")
+                            </td>
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                <td class="align-middle">
+                                    @order.User.Nombre @order.User.Apellido
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+       
 
     </div>
 </div>

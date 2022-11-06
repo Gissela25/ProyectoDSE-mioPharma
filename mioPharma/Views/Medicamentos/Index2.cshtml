@@ -7,64 +7,66 @@
         <div class="text-white" style="color:black;">
             <a asp-controller="Medicamentos" asp-action="Create" class="btn btn-secondary"><i class="bi bi-file-earmark-plus"></i></a>
         </div>
-        <table id="table" class="table">
-            <thead>
-                <tr class="text-center text-white" style="background-color: #2D3589;">
-                    <th>@Html.DisplayNameFor(model => model.Nombre)</th>
-                    <th>@Html.DisplayNameFor(model => model.Img_Medicamento)</th>
-                    <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
-                    <th>@Html.DisplayNameFor(model => model.Precio)</th>
-                    <th>@Html.DisplayNameFor(model => model.Existencias)</th>
-                    <th>@Html.DisplayNameFor(model => model.Presentacion)</th>
-                    <th>@Html.DisplayNameFor(model => model.Img_Composicion)</th>
-                    <th>@Html.DisplayNameFor(model => model.EstadoM)</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Nombre)
-                        </td>
-                        <td class="align-middle">
-                            <img class="" src="@item.Img_Medicamento" style="max-width:150px" />
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Descripcion)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Precio)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Existencias)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Presentacion)
-                        </td>
-                        <td class="align-middle">
-                            <img class="" src="@item.Img_Composicion" style="max-width:150px" />
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.EstadoM)
-                        </td>
-                        <td class="align-middle">
-                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
-                             @if (item.EstadoM.ToString() == "Activo")
-                            {
-                                <a class="btn" style="background-color: #2D3589; color:white" asp-action="EditState" asp-route-id="@item.Id" asp-route-state="Desactivar" ><i class="bi bi-person-dash-fill"></i></a>
-                            }
-                            else
-                            {
-                                <a class="btn btn-warning" asp-action="EditState" asp-route-id="@item.Id" asp-route-state="Activar" ><i class="bi bi-person-plus-fill"></i></a>
-                            }
-                            @*<a class="btn btn-warning" asp-action="EditState" asp-route-id="@item.Id" asp-route-state="Desactivar"><i class="bi bi-person-dash-fill"></i></a>*@
-                        </td>
+        <div class="table-responsive ">
+            <table id="table" class="table">
+                <thead>
+                    <tr class="text-center text-white" style="background-color: #2D3589;">
+                        <th scope="col">@Html.DisplayNameFor(model => model.Nombre)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Img_Medicamento)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Descripcion)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Precio)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Existencias)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Presentacion)</th>
+                        <th class="d-none d-sm-block" scope="col">@Html.DisplayNameFor(model => model.Img_Composicion)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.EstadoM)</th>
+                        <th scope="col">Acciones</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td class="align-middle">
+                                <img class="" src="@item.Img_Medicamento" style="max-width:150px" />
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Precio)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Existencias)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Presentacion)
+                            </td>
+                            <td class="align-middle d-none d-sm-block">
+                                <img class="" src="@item.Img_Composicion" style="max-width:150px" />
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.EstadoM)
+                            </td>
+                            <td class="align-middle">
+                                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                @if (item.EstadoM.ToString() == "Activo")
+                                {
+                                    <a class="btn btn-success" asp-action="EditState" asp-route-id="@item.Id" asp-route-state="Desactivar"><i class="bi bi-check-lg"></i></a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-danger" asp-action="EditState" asp-route-id="@item.Id" asp-route-state="Activar"><i class="bi bi-x-lg"></i></a>
+                                }
+                                @*<a class="btn btn-warning" asp-action="EditState" asp-route-id="@item.Id" asp-route-state="Desactivar"><i class="bi bi-person-dash-fill"></i></a>*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 @section Scripts{

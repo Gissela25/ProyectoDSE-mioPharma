@@ -2,14 +2,14 @@
 @{
     ViewData["Title"] = "Lista de Medicamentos";
 }
-<div class="row">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 my-3">
    
         @foreach (var item in Model)
         {
             @if(@item.EstadoM.ToString() == "Activo")
             {
-            <div class="col-md-4 col-xs-6 border-primary mb-3">
-                <div class="card mb-3 mt-4" style="max-width: 305px;">
+            <div class="col">
+                <div class="card cards mb-3 mt-4" style="max-width: 305px;">
                     <div class="row g-0">
                         <div class="col-md-12 mb-4">
                             <div class="card-header text-white" style="background-color: #2D3589;">
@@ -30,27 +30,6 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card-body">
-                                @*<p class="card-text"></p>
-                        <p class="card-text"><b>Cinema: </b>@item.Cinema.Name</p>
-                        <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
-                        <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
-                        <p class="card-text"><b>End Date: </b>@item.EndDate.ToString("dd MMM yy")</p>
-                        <p class="card-text ">
-                        <b>Status: </b>
-                        @if(DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate )
-                        {
-                        <span class="badge bg-success text-white">AVAILABLE</span>
-                        }
-                        else if(DateTime.Now > item.EndDate)
-                        {
-                        <span class="bage bg-danger text-white">EXPIRED</span>
-                        }
-                        else
-                        {
-                        <span class="bage bg-primary text-white">UPCOMING</span>
-
-                        }
-                        </p>*@
                                 <p class="card-text" >
                                     <b> Precio: $</b>@item.Precio
                                     <b>Existencias:</b>@item.Existencias

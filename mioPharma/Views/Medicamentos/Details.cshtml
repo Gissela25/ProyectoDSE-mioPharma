@@ -3,20 +3,20 @@
 @{
     ViewData["Title"] = "Detalles del Medicamento";
 }
-<div class="container text-center">
+<div class="container text-center justify-content-center">
     <div class="row">
         <div class="col-md-4  offset-md-4 text-center">
             <h1>@Model.Nombre</h1>
         </div>
         <hr class="my-2" />
-        <div class="col">
+        <div class="col-md-2">
             <div class="mt-5">
                 <div class="pt-5">
                       <img src="@Model.Img_Medicamento" width="300" height="370">
                 </div>
             </div>
         </div>
-        <div class="col-8 col-sm-6">
+        <div class="col-md-6 col-sm-6  offset-sm-3">
             <div class="card text-center">
                 <div class="card-header text-white" style="background-color:#2D3589">
                     Detalles de @Model.Nombre

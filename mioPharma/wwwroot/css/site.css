@@ -19,3 +19,28 @@ body {
 .noresize{
     resize:none;
 }
+
+@media (min-width: 768px) {
+    .cards:hover {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+}
+
+@media (min-width: 992px) {
+    .cards:hover {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+}
+
+@media (min-width: 1200px) {
+    .cards:hover {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+}
+
