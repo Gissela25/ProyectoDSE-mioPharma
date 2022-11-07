@@ -1,6 +1,5 @@
 # PROYECTODSE2022
-Creación de un E-commerce para la empresa MioPharma con el objetivo de cumplir con el desarrollo del proyecto de cátedra de la materia de  
-Desarrollo de Software Empresarial de la Universidad Don Bosco, El Salvador.
+Creación de un E-commerce para la empresa MioPharma con el objetivo de cumplir con el desarrollo del proyecto de cátedra de la materia de Desarrollo de Software Empresarial de la Universidad Don Bosco, El Salvador.
 # HERRAMIENTAS
 >Asp.net
 
