@@ -23,4 +23,4 @@ Desarrollo de Software Empresarial de la Universidad Don Bosco, El Salvador.
 
 >Morales Lira, Jose Antonio 
 # ENLACES DE INTERES
->Enlace de sitio web ------->https://miopharma.azurewebsites.net/
+>Enlace de sitio web:  [Miopharma](https://miopharma.azurewebsites.net/)
