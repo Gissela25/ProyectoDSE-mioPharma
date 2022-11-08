@@ -31,12 +31,6 @@ else{
             <i class="bi bi-person-badge"></i> Hola @UserManager.GetUserName(User)
         </button>
         <ul class="dropdown-menu" aria-labelledby="profile-btn">
-           
-            <li>
-                <a class="dropdown-item" asp-controller="Ordenes" asp-action="Index">
-                    <i class="bi bi-list"></i> Ordenes
-                </a>
-            </li>
             <li>
                 <a class="dropdown-item" asp-controller="Account" asp-action="Edit" asp-route-id="@UserManager.GetUserId(User)">
                     <i class="bi bi-pencil"></i> Editar

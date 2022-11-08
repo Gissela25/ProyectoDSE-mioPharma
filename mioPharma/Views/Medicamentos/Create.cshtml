@@ -11,40 +11,40 @@
             <h1 class="text-center">Agregar Medicamentos</h1>
         </p>
         <div class="row">
-                <form asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group text-center">
-                                <img id="Img_MedicamentoPreview" style="max-width:170px;max-height:200px" />
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group text-center">
+                            <img id="Img_MedicamentoPreview" style="max-width:170px;max-height:200px" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Img_Medicamento" class="control-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-capsule"></i></span>
+                                <input asp-for="Img_Medicamento" class="form-control" />
                             </div>
-                            <div class="form-group">
-                                <label asp-for="Img_Medicamento" class="control-label"></label>
-                                <div class="input-group mb-3">
-                                    <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-capsule"></i></span>
-                                    <input asp-for="Img_Medicamento" class="form-control" />
-                                </div>
-                                <span asp-validation-for="Img_Medicamento" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Nombre" class="control-label"></label>
-                                    <div class="input-group mb-3">
-                                        <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-file-fill"></i></span>
-                                        <input asp-for="Nombre" class="form-control" />
-                                    </div>
-                                    <span asp-validation-for="Nombre" class="text-danger"></span>
-                                    </div>
-                                        <div class="form-group">
-                                            <label asp-for="Precio" class="control-label"></label>
-                                            <div class="input-group mb-3">
-                                                <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-currency-dollar"></i></span>
-                                                <input asp-for="Precio" class="form-control" />
-                                            </div>
-                                            <span asp-validation-for="Precio" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+                            <span asp-validation-for="Img_Medicamento" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Nombre" class="control-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-file-fill"></i></span>
+                                <input asp-for="Nombre" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Precio" class="control-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-currency-dollar"></i></span>
+                                <input asp-for="Precio" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Precio" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group text-center">
                             <img id="Img_ComposicionPreview" style="max-width:150px; max-height:170px" />
                         </div>
@@ -56,29 +56,29 @@
                             </div>
                             <span asp-validation-for="Img_Composicion" class="text-danger"></span>
                         </div>
-                                        <div class="form-group">
-                                            <label asp-for="Existencias" class="control-label"></label>
-                                            <div class="input-group mb-3">
-                                                <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-archive"></i></span>
-                                                <input asp-for="Existencias" class="form-control" />
-                                            </div>
-                                            <span asp-validation-for="Existencias" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Presentacion" class="control-label"></label>
-                                            <div class="input-group mb-3">
-                                                <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-prescription"></i></span>
-                                                <input asp-for="Presentacion" class="form-control" />
-                                            </div>
-                                            <span asp-validation-for="Presentacion" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <select asp-for="EstadoM" hidden class="form-control" asp-items="Html.GetEnumSelectList<EstadoU>()"></select>
-                                            <span asp-validation-for="EstadoM" class="text-danger"></span>
-                                        </div>
-                                    </div>
+                        <div class="form-group">
+                            <label asp-for="Existencias" class="control-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-archive"></i></span>
+                                <input asp-for="Existencias" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Existencias" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Presentacion" class="control-label"></label>
+                            <div class="input-group mb-3">
+                                <span class="text-white input-group-text" style="background-color: #2D3589;" id="basic-addon1"><i class="bi bi-prescription"></i></span>
+                                <input asp-for="Presentacion" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Presentacion" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <select asp-for="EstadoM" hidden class="form-control" asp-items="Html.GetEnumSelectList<EstadoU>()"></select>
+                            <span asp-validation-for="EstadoM" class="text-danger"></span>
+                        </div>
                     </div>
-                    <div class="col-md-12">
+                </div>
+                <div class="col-md-12">
                     <div class="form-group">
                         <label asp-for="Descripcion" class="control-label"></label>
                         <div class="input-group mb-3">
@@ -87,23 +87,23 @@
                             <span asp-validation-for="Descripcion" class="text-danger"></span>
                         </div>
                     </div>
-                    </div>
-                      <div class="form-group vstack gap-2 col-md-5 mx-auto mt-4">
-                                    <input type="submit" value="Crear" class="btn btn-outline-primary float-right" />
-                        <a class="btn btn-outline " style="background-color: #2D3589; color:white" asp-action="Index2">Regresar</a>
-                    </div>
-                </form>
+                </div>
+                <div class="form-group vstack gap-2 col-md-5 mx-auto mt-4">
+                    <input type="submit" value="Crear" class="btn btn-outline-primary float-right" />
+                    <a class="btn btn-outline " style="background-color: #2D3589; color:white" asp-action="Index2">Regresar</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 @section Scripts{
     <script>
-        $("#Img_Medicamento").on("change", function() {
+        $("#Img_Medicamento").on("change", function () {
             var output = document.getElementById('Img_MedicamentoPreview');
             output.src = $(this).val();
         })
-        $("#Img_Composicion").on("change", function() {
+        $("#Img_Composicion").on("change", function () {
             var output = document.getElementById('Img_ComposicionPreview');
             output.src = $(this).val();
         })

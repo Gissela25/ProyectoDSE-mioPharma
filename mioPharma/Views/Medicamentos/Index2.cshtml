@@ -3,7 +3,7 @@
     ViewData["Title"] = "Lista de Medicamentos";
 }
 <div class="row">
-    <div class="">
+    <div class="my-3">
         <div class="text-white" style="color:black;">
             <a asp-controller="Medicamentos" asp-action="Create" class="btn btn-secondary"><i class="bi bi-file-earmark-plus"></i></a>
         </div>
@@ -60,7 +60,7 @@
                                 {
                                     <a class="btn btn-danger" asp-action="EditState" asp-route-id="@item.Id" asp-route-state="Activar"><i class="bi bi-x-lg"></i></a>
                                 }
-                                @*<a class="btn btn-warning" asp-action="EditState" asp-route-id="@item.Id" asp-route-state="Desactivar"><i class="bi bi-person-dash-fill"></i></a>*@
+            
                             </td>
                         </tr>
                     }
